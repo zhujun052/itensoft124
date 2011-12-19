@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.VirtualManagerMapper">
+  <resultMap id="VirtualmanagerResult" type="com.itensoft.model.Virtualmanager">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="User1" jdbcType="VARCHAR" property="user1" />
+    <result column="Priority1" jdbcType="INTEGER" property="priority1" />
+    <result column="User2" jdbcType="VARCHAR" property="user2" />
+    <result column="Priority2" jdbcType="INTEGER" property="priority2" />
+    <result column="User3" jdbcType="VARCHAR" property="user3" />
+    <result column="Priority3" jdbcType="INTEGER" property="priority3" />
+    <result column="User4" jdbcType="VARCHAR" property="user4" />
+    <result column="Priority4" jdbcType="INTEGER" property="priority4" />
+    <result column="User5" jdbcType="VARCHAR" property="user5" />
+    <result column="Priority5" jdbcType="INTEGER" property="priority5" />
+    <result column="User6" jdbcType="VARCHAR" property="user6" />
+    <result column="Priority6" jdbcType="INTEGER" property="priority6" />
+    <result column="User7" jdbcType="VARCHAR" property="user7" />
+    <result column="Priority7" jdbcType="INTEGER" property="priority7" />
+    <result column="User8" jdbcType="VARCHAR" property="user8" />
+    <result column="Priority8" jdbcType="INTEGER" property="priority8" />
+  </resultMap>
+  <select id="getTotal" resultType="INTEGER">
+  	select count(*) from VirtualManager
+  </select>
+  <select id="loadList" resultMap="VirtualmanagerResult">
+  	select * from ( select TOP ${rows} * FROM ( SELECT TOP ${start} * from VirtualManager   ORDER BY id ASC ) as t1   ORDER BY id DESC ) as t2   ORDER BY id ASC
+  </select>
+  <insert id="insert" >
+  	insert into VirtualManager (Code, Name, User1, 
+      Priority1, User2, Priority2, 
+      User3, Priority3, User4, 
+      Priority4, User5, Priority5, 
+      User6, Priority6, User7, 
+      Priority7, User8, Priority8
+      )
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{user1,jdbcType=VARCHAR}, 
+      #{priority1,jdbcType=INTEGER}, #{user2,jdbcType=VARCHAR}, #{priority2,jdbcType=INTEGER}, 
+      #{user3,jdbcType=VARCHAR}, #{priority3,jdbcType=INTEGER}, #{user4,jdbcType=VARCHAR}, 
+      #{priority4,jdbcType=INTEGER}, #{user5,jdbcType=VARCHAR}, #{priority5,jdbcType=INTEGER}, 
+      #{user6,jdbcType=VARCHAR}, #{priority6,jdbcType=INTEGER}, #{user7,jdbcType=VARCHAR}, 
+      #{priority7,jdbcType=INTEGER}, #{user8,jdbcType=VARCHAR}, #{priority8,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="update">
+  	update VirtualManager
+    set
+      Name = #{record.name,jdbcType=VARCHAR},
+      User1 = #{record.user1,jdbcType=VARCHAR},
+      Priority1 = #{record.priority1,jdbcType=INTEGER},
+      User2 = #{record.user2,jdbcType=VARCHAR},
+      Priority2 = #{record.priority2,jdbcType=INTEGER},
+      User3 = #{record.user3,jdbcType=VARCHAR},
+      Priority3 = #{record.priority3,jdbcType=INTEGER},
+      User4 = #{record.user4,jdbcType=VARCHAR},
+      Priority4 = #{record.priority4,jdbcType=INTEGER},
+      User5 = #{record.user5,jdbcType=VARCHAR},
+      Priority5 = #{record.priority5,jdbcType=INTEGER},
+      User6 = #{record.user6,jdbcType=VARCHAR},
+      Priority6 = #{record.priority6,jdbcType=INTEGER},
+      User7 = #{record.user7,jdbcType=VARCHAR},
+      Priority7 = #{record.priority7,jdbcType=INTEGER},
+      User8 = #{record.user8,jdbcType=VARCHAR},
+      Priority8 = #{record.priority8,jdbcType=INTEGER}
+	where  ID = #{record.id,jdbcType=INTEGER},      
+  </update>
+  <delete id="delete" >
+    delete from VirtualManager
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+</mapper>

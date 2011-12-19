@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.UserMapper">
+	<resultMap id="UserResult" type="com.itensoft.model.User">
+		<id column="Name" jdbcType="VARCHAR" property="name" />
+		<result column="Password" jdbcType="CHAR" property="password" />
+		<result column="Note" jdbcType="VARCHAR" property="note" />
+	</resultMap>
+	<select id="findByName" resultMap="UserResult">
+		select * from [user] where name = #{name}
+	</select>
+	<select id="loadList" resultMap="UserResult" >
+		select * from ( select TOP ${rows} * FROM ( SELECT TOP ${start} * from [user]   ORDER BY name ASC ) as t1   ORDER BY name DESC ) as t2   ORDER BY name ASC
+	</select>
+	<select id="getTotal" resultType="INTEGER" >
+		select count(*) from [user] 
+	</select>
+	<insert id="addUser" >
+    insert into [User] (Name, Password, Note
+      )
+    values (#{record.name,jdbcType=VARCHAR}, #{record.password,jdbcType=CHAR}, #{record.note,jdbcType=VARCHAR}
+      )
+	</insert>
+	<update id="update" >
+		UPDATE [User] 
+		   set name = #{record.name,jdbcType=VARCHAR}
+		      ,Password = #{record.password,jdbcType=VARCHAR}
+		      ,Note =#{record.note,jdbcType=VARCHAR} 
+		 WHERE name = #{record.name,jdbcType=VARCHAR}
+	</update>
+	<update id="delete" >
+		delete from [User] where [Name] = #{name}
+	</update>
+	<select id="existUser" resultType="INTEGER">
+		select count(*) coun from [User] where Name = #{name}
+	</select>
+</mapper>
