@@ -1,0 +1,23 @@
+/* 
+    Document   : itensoft
+    Created on : 2011-10-18, 16:02:11
+    Author     : yufeng
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+.add {
+    background-image: url( ../images/add.gif ) !important;
+}
+
+.x-btn-text-icon .x-btn-icon-small-left .x-btn-text{
+    background-position: 0 center;/*默认*/
+    background-repeat: no-repeat;/*默认*/
+    padding-left:18px;/*默认*/
+    height:16px;/*默认*/
+    font-size:15px;/*字体大小设置*/
+}

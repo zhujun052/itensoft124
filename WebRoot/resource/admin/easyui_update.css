@@ -1,0 +1,13 @@
+.tabs li{border-top-left-radius: 0px;border-top-right-radius: 0px;}
+a.l-btn{border-radius:0px;}
+.datagrid table tr td{line-height:20px;}
+.btnbar{border-top:1px solid #AED0EA;text-align: right; padding:5px; height: 28px;}
+.bdcenter{padding:10px;}
+.datagrid-row-selected,.datagrid-row-over{background-image: none;}
+.panel-body{background-color: #fff;}
+.iconsp{padding-left: 20px;display: inline-block;height: 16px;line-height: 16px;}
+
+/*grid的toolbar的一些样式*/
+.tipt{border:1px solid #ccc;width:100px;}
+.gtb{padding-left:10px;}
+

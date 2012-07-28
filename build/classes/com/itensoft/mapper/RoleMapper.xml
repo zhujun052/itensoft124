@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.RoleMapper">
+  <resultMap id="RoleResult" type="com.itensoft.model.Role">
+    <id column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="LogonServer" jdbcType="CHAR" property="logonserver" />
+    <result column="GroupCode" jdbcType="INTEGER" property="groupcode" />
+    <result column="AuditClient" jdbcType="CHAR" property="auditclient" />
+    <result column="UninstallClient" jdbcType="CHAR" property="uninstallclient" />
+    <result column="ManageCert" jdbcType="CHAR" property="managecert" />
+    <result column="ScanEncryption" jdbcType="CHAR" property="scanencryption" />
+    <result column="ScanDecryption" jdbcType="CHAR" property="scandecryption" />
+    <result column="UpdateSignatureLib" jdbcType="CHAR" property="updatesignaturelib" />
+    <result column="LogonManage" jdbcType="CHAR" property="logonmanage" />
+    <result column="ResponseDecrypt" jdbcType="CHAR" property="responsedecrypt" />
+    <result column="ResponseDeploy" jdbcType="CHAR" property="responsedeploy" />
+    <result column="ResponseAdjuest" jdbcType="CHAR" property="responseadjuest" />
+    <result column="ResponseDeployReadonly" jdbcType="CHAR" property="responsedeployreadonly" />
+    <result column="ResponseDeployDisablePrint" jdbcType="CHAR" property="responsedeploydisableprint" />
+    <result column="ResponseDeployDisableSnapshot" jdbcType="CHAR" property="responsedeploydisablesnapshot" />
+    <result column="ResponseDeployDeleteSelf" jdbcType="CHAR" property="responsedeploydeleteself" />
+    <result column="LogonAlone" jdbcType="CHAR" property="logonalone" />
+    <result column="AloneDecrypt" jdbcType="CHAR" property="alonedecrypt" />
+    <result column="AloneDeploy" jdbcType="CHAR" property="alonedeploy" />
+    <result column="AloneAdjuest" jdbcType="CHAR" property="aloneadjuest" />
+    <result column="LogonDocer" jdbcType="CHAR" property="logondocer" />
+    <result column="DocDecrypt" jdbcType="CHAR" property="docdecrypt" />
+    <result column="DocChangeGrant" jdbcType="CHAR" property="docchangegrant" />
+    <result column="DocPack" jdbcType="CHAR" property="docpack" />
+  </resultMap>
+  <select id="getRoleByName" resultMap="RoleResult">
+  	select b.Name,b.LogonServer from RoleUser a , Role b where a.RoleName=b.Name and a.UserName=#{name}
+  </select>
+  <select id="getTotal" resultType="INTEGER">
+  	select count(*) from Role
+  </select>
+  <select id="loadList" resultMap="RoleResult">
+  	select * from ( select TOP ${rows} * FROM ( SELECT TOP ${start} * from Role  ORDER BY name ASC ) as t1   ORDER BY name DESC ) as t2   ORDER BY name ASC
+  </select>
+  <insert id="insert">
+      insert into Role (Name, LogonServer, GroupCode, 
+      AuditClient, UninstallClient, ManageCert, 
+      ScanEncryption, ScanDecryption, UpdateSignatureLib, 
+      LogonManage, ResponseDecrypt, ResponseDeploy, 
+      ResponseAdjuest, ResponseDeployReadonly, ResponseDeployDisablePrint, 
+      ResponseDeployDisableSnapshot, ResponseDeployDeleteSelf, 
+      LogonAlone, AloneDecrypt, AloneDeploy, 
+      AloneAdjuest, LogonDocer, DocDecrypt, 
+      DocChangeGrant, DocPack)
+    values (#{name,jdbcType=VARCHAR}, #{logonserver,jdbcType=CHAR}, #{groupcode,jdbcType=INTEGER}, 
+      #{auditclient,jdbcType=CHAR}, #{uninstallclient,jdbcType=CHAR}, #{managecert,jdbcType=CHAR}, 
+      #{scanencryption,jdbcType=CHAR}, #{scandecryption,jdbcType=CHAR}, #{updatesignaturelib,jdbcType=CHAR}, 
+      #{logonmanage,jdbcType=CHAR}, #{responsedecrypt,jdbcType=CHAR}, #{responsedeploy,jdbcType=CHAR}, 
+      #{responseadjuest,jdbcType=CHAR}, #{responsedeployreadonly,jdbcType=CHAR}, #{responsedeploydisableprint,jdbcType=CHAR}, 
+      #{responsedeploydisablesnapshot,jdbcType=CHAR}, #{responsedeploydeleteself,jdbcType=CHAR}, 
+      #{logonalone,jdbcType=CHAR}, #{alonedecrypt,jdbcType=CHAR}, #{alonedeploy,jdbcType=CHAR}, 
+      #{aloneadjuest,jdbcType=CHAR}, #{logondocer,jdbcType=CHAR}, #{docdecrypt,jdbcType=CHAR}, 
+      #{docchangegrant,jdbcType=CHAR}, #{docpack,jdbcType=CHAR})
+  </insert>
+  <delete id="delete">
+   delete from Role
+    where Name = #{name,jdbcType=VARCHAR}
+  </delete>
+  <update id="update">
+  	    update Role
+    <set>
+      <if test="logonserver != null">
+        LogonServer = #{logonserver,jdbcType=CHAR},
+      </if>
+      <if test="groupcode != null">
+        GroupCode = #{groupcode,jdbcType=INTEGER},
+      </if>
+      <if test="auditclient != null">
+        AuditClient = #{auditclient,jdbcType=CHAR},
+      </if>
+      <if test="uninstallclient != null">
+        UninstallClient = #{uninstallclient,jdbcType=CHAR},
+      </if>
+      <if test="managecert != null">
+        ManageCert = #{managecert,jdbcType=CHAR},
+      </if>
+      <if test="scanencryption != null">
+        ScanEncryption = #{scanencryption,jdbcType=CHAR},
+      </if>
+      <if test="scandecryption != null">
+        ScanDecryption = #{scandecryption,jdbcType=CHAR},
+      </if>
+      <if test="updatesignaturelib != null">
+        UpdateSignatureLib = #{updatesignaturelib,jdbcType=CHAR},
+      </if>
+      <if test="logonmanage != null">
+        LogonManage = #{logonmanage,jdbcType=CHAR},
+      </if>
+      <if test="responsedecrypt != null">
+        ResponseDecrypt = #{responsedecrypt,jdbcType=CHAR},
+      </if>
+      <if test="responsedeploy != null">
+        ResponseDeploy = #{responsedeploy,jdbcType=CHAR},
+      </if>
+      <if test="responseadjuest != null">
+        ResponseAdjuest = #{responseadjuest,jdbcType=CHAR},
+      </if>
+      <if test="responsedeployreadonly != null">
+        ResponseDeployReadonly = #{responsedeployreadonly,jdbcType=CHAR},
+      </if>
+      <if test="responsedeploydisableprint != null">
+        ResponseDeployDisablePrint = #{responsedeploydisableprint,jdbcType=CHAR},
+      </if>
+      <if test="responsedeploydisablesnapshot != null">
+        ResponseDeployDisableSnapshot = #{responsedeploydisablesnapshot,jdbcType=CHAR},
+      </if>
+      <if test="responsedeploydeleteself != null">
+        ResponseDeployDeleteSelf = #{responsedeploydeleteself,jdbcType=CHAR},
+      </if>
+      <if test="logonalone != null">
+        LogonAlone = #{logonalone,jdbcType=CHAR},
+      </if>
+      <if test="alonedecrypt != null">
+        AloneDecrypt = #{alonedecrypt,jdbcType=CHAR},
+      </if>
+      <if test="alonedeploy != null">
+        AloneDeploy = #{alonedeploy,jdbcType=CHAR},
+      </if>
+      <if test="aloneadjuest != null">
+        AloneAdjuest = #{aloneadjuest,jdbcType=CHAR},
+      </if>
+      <if test="logondocer != null">
+        LogonDocer = #{logondocer,jdbcType=CHAR},
+      </if>
+      <if test="docdecrypt != null">
+        DocDecrypt = #{docdecrypt,jdbcType=CHAR},
+      </if>
+      <if test="docchangegrant != null">
+        DocChangeGrant = #{docchangegrant,jdbcType=CHAR},
+      </if>
+      <if test="docpack != null">
+        DocPack = #{docpack,jdbcType=CHAR},
+      </if>
+    </set>
+    where Name = #{name,jdbcType=VARCHAR}
+  </update>
+</mapper>

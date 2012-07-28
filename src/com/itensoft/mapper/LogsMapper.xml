@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.LogsMapper">
+  <resultMap id="LogsResult" type="com.itensoft.model.Logs">
+    <id column="Code" jdbcType="INTEGER" property="code" />
+    <result column="ClientId" jdbcType="VARCHAR" property="clientid" />
+    <result column="SessionId" jdbcType="VARCHAR" property="sessionid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="DateTime1" jdbcType="TIMESTAMP" property="datetime1" />
+    <result column="Action" jdbcType="VARCHAR" property="action" />
+    <result column="Reason1" jdbcType="VARCHAR" property="reason1" />
+    <result column="VirtualManager" jdbcType="VARCHAR" property="virtualmanager" />
+    <result column="DateTime2" jdbcType="TIMESTAMP" property="datetime2" />
+    <result column="Result1" jdbcType="VARCHAR" property="result1" />
+    <result column="Reason2" jdbcType="VARCHAR" property="reason2" />
+    <result column="ProcessCode" jdbcType="INTEGER" property="processcode" />
+    <result column="Docer" jdbcType="VARCHAR" property="docer" />
+    <result column="DateTime3" jdbcType="TIMESTAMP" property="datetime3" />
+    <result column="Result2" jdbcType="VARCHAR" property="result2" />
+    <result column="Reason3" jdbcType="VARCHAR" property="reason3" />
+  </resultMap>
+  <select id="getTotalFilter" resultType="INTEGER">
+  	select count(*) coun from Logs where 1=1 
+  	<if test="username!='' and username!=null">
+  	and	username like <![CDATA[%]]>#{username}<![CDATA[%]]>
+  	</if>
+  	<if test="startdate!='' and startdate!=null">
+  	and	datetime1 <![CDATA[>]]> #{startdate}
+  	</if>
+  	<if test="enddate!='' and enddate!=null">
+  	and	datetime2 <![CDATA[<]]> #{enddate}
+  	</if>
+  	<if test="manager!='' and manager!=null">
+  	and	VirtualManager like <![CDATA[%]]>#{manager}<![CDATA[%]]>
+  	</if>
+  	<if test="docer!='' and docer!=null">
+  	and	docer like <![CDATA[%]]>#{docer}<![CDATA[%]]>
+  	</if>
+  </select>
+  <select id="loadFilter" resultMap="LogsResult">
+  		select * from ( select TOP ${rows} * FROM ( SELECT TOP ${start} * from Logs  
+	  		where 1=1 
+	  	<if test="username!='' and username!=null">
+	  	and	username like <![CDATA[%]]>#{username}<![CDATA[%]]>
+	  	</if>
+	  	<if test="startdate!='' and startdate!=null">
+	  	and	datetime1 <![CDATA[>]]> #{startdate}
+	  	</if>
+	  	<if test="enddate!='' and enddate!=null">
+	  	and	datetime2 <![CDATA[<]]> #{enddate}
+	  	</if>
+	  	<if test="manager!='' and manager!=null">
+	  	and	VirtualManager like <![CDATA[%]]>#{manager}<![CDATA[%]]>
+	  	</if>
+	  	<if test="docer!='' and docer!=null">
+	  	and	docer like <![CDATA[%]]>#{docer}<![CDATA[%]]>
+	  	</if> 
+  		ORDER BY code ASC ) as t1   ORDER BY code DESC ) as t2   ORDER BY code ASC
+  </select>
+</mapper>  

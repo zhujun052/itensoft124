@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.GroupMapper">
+  <resultMap id="GroupResult" type="com.itensoft.model.Group">
+    <id column="Code" jdbcType="INTEGER" property="code" />
+    <result column="ParentCode" jdbcType="INTEGER" property="parentcode" />
+    <result column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Level" jdbcType="INTEGER" property="level" />
+    <result column="InheritSet" jdbcType="CHAR" property="inheritset" />
+    <result column="InheritPlainProgram" jdbcType="CHAR" property="inheritplainprogram" />
+    <result column="InheritBlackProgram" jdbcType="CHAR" property="inheritblackprogram" />
+    <result column="InheritRcv" jdbcType="CHAR" property="inheritrcv" />
+    <result column="InheritIdentity" jdbcType="CHAR" property="inheritidentity" />
+    <result column="InheritVirtualManager" jdbcType="CHAR" property="inheritvirtualmanager" />
+    <result column="PolicyCode" jdbcType="INTEGER" property="policycode" />
+    <result column="HostName" jdbcType="VARCHAR" property="hostname" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="Audited" jdbcType="CHAR" property="audited" />
+    <result column="RefreshId" jdbcType="INTEGER" property="refreshid" />
+    <result column="HardId" jdbcType="VARCHAR" property="hardid" />
+    <result column="Actived" jdbcType="CHAR" property="actived" />
+    <result column="childnums" jdbcType="VARCHAR" property="childnums" />
+  </resultMap>
+  <select id="loadByParentCode" resultMap="GroupResult" >
+  	select g.*,(select count(Code) from [group] where ParentCode = g.Code) childnums from [group] g where g.ParentCode = #{parentCode}
+  </select>
+</mapper>  

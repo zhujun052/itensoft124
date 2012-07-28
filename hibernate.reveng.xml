@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="Policy" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="ServerLog" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+		<column name="DateTime" property="RQ"></column>
+	</table>
+	<table name="ClientLog" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+		<column name="DateTime" property="RQ"></column>
+	</table>
+	<table name="ManagerLog" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+		<column name="DateTime" property="RQ"></column>
+	</table>
+	<table name="Group" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="Setup" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GroupControlProgram" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GroupFinalControlProgram" schema="dbo"
+		catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="User" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="ManagerMessage" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+		<column name="VirtualManager" property="VManager"></column>
+		<column name="ManagerName" property="MName"></column>
+		<column name="DateTime" property="RQ"></column>
+		<column name="SessionId" property="SId"></column>
+		<column name="ClientId" property="CId"></column>
+	</table>
+	<table name="ClientMessage" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+		<column name="DateTime" property="RQ"></column>
+	</table>
+	<table name="VirtualManagerDocer" schema="dbo" catalog="phoenix">
+		<primary-key>
+
+			<key-column name="VitrualManagerName" />
+		</primary-key>
+	</table>
+	<table name="DocerMessage" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="Logs" schema="dbo" catalog="phoenix"
+		class="com.itensoft.Log">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="GroupRecver" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="GroupIdentity" schema="dbo" catalog="phoenix">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="GroupFinalIdentity" schema="dbo" catalog="phoenix">
+	<primary-key>
+		<generator class="assigned"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>
