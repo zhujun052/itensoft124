@@ -91,7 +91,7 @@ $(function() {
 				if(data.type == "false"){
 				    error(data.message);
 				}else{
-				    $('#user_list').datagrid('reload');
+				    $('#role_list').datagrid('reload');
 				}
 			    },'json');
 			}

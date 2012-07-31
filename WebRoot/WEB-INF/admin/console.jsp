@@ -4,7 +4,7 @@
 <script type="text/javascript" src="resource/admin/top.js"></script>
 <script type="text/javascript" src="resource/admin/js/index.js"></script>
 </head>
-<body id="bodycontainer" class="easyui-layout">
+<body id="bodycontainer" class="easyui-layout" >
 	<SCRIPT>document.oncontextmenu = function(){return false;};</SCRIPT>
 	<div region="north" style="height: 85px; overflow: hidden;">
 		<a class="logo"></a>

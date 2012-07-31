@@ -21,7 +21,7 @@
 								name="password" required="true" validType="length[1,50]" /></td>
 						</tr>
 						<tr>
-							<td class="edittd">描述：</td>
+							<td class="edittd" valign="top" >描述：</td>
 							<td>
 								<textarea name="note" class="textborder" required="true" validType="length[1,50]"  ></textarea>
 							</td>

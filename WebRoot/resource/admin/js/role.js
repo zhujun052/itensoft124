@@ -1,4 +1,48 @@
 $(function() {
+    
+    $('#role_userlist').datagrid({
+	fit : 'true',
+	nowrap : true,
+	striped : true,
+	collapsible : false,
+	idField : 'id',
+	singleSelect : true,
+	rownumbers : true,
+	pagination:true,
+	fitColumns:true,
+	height:265,
+	toolbar : [
+	    {
+		    text : '添加',
+		    iconCls:'icon-add',
+		    handler : function() {
+			
+		    }
+	    },
+	    {
+		    text : '删除',
+		    iconCls:'icon-remove',
+		    handler : function() {
+			
+		    }
+	    },
+	],
+	frozenColumns : [[{
+		field : 'ck',
+		checkbox : true
+	}]],
+	columns : [ [ {
+	    field : 'name',
+	    title : '角色',
+	    width : 100
+	}, {
+	    field : 'note',
+	    title : '描述',
+	    width : 100
+	}] ]
+    });
+    
+    
     $('#role_list').datagrid({
 	url : 'admin/role/list',
 	fit : 'true',
@@ -29,6 +73,8 @@ $(function() {
 	    text : '修改',
 	    iconCls:'icon-edit',
 	    handler : function() {
+		
+		
 		var selected = $('#role_list').datagrid('getSelected');
 		if(selected){	
 		    
@@ -40,9 +86,9 @@ $(function() {
 			$("#role_LogonServer").attr("checked","checked");
 		    }
 		    
-		    if(selected.groupcode == "T"){
-			$("#role_GroupCode").attr("checked","checked");
-		    }
+//		    if(selected.groupcode == "T"){
+//			$("#role_GroupCode").attr("checked","checked");
+//		    }
 		    
 		    if(selected.auditclient == "T"){
 			$("#role_AuditClient").attr("checked","checked");
@@ -111,7 +157,38 @@ $(function() {
 	    text : '删除',
 	    iconCls:'icon-remove',
 	    handler : function() {
-
+		var selected = $('#role_list').datagrid('getSelected');
+		if(selected){
+		    
+		    confirm('确认删除该用户？',function(r){
+			if(r){
+			    $.post('admin/role/delete',{name:selected.name},function(data){
+				if(data.type == "false"){
+				    error(data.message);
+				}else{
+				    $('#role_list').datagrid('reload');
+				}
+			    },'json');
+			}
+		    });
+		    
+		}else{
+		    message("请选择一行记录！");
+		}
+		
+	    }
+	},{
+	    text : '关联用户',
+	    iconCls:'icon-remove',
+	    handler : function() {
+		var selected = $('#role_list').datagrid('getSelected');
+		if(selected){
+		    $("#role_user").window("open");
+		    
+		    
+		}else{
+		    message("请选择一行记录！");
+		}
 	    }
 	}],
 	frozenColumns : [[{
@@ -121,15 +198,7 @@ $(function() {
 	columns : [ [ {
 	    field : 'name',
 	    title : '角色',
-	    width : 200
-	},
-	{
-	    field : 'id',
-	    title : '操作',
-	    width : 200,
-	    formatter : function(val, rowdata, rowindex) {
-		return "<span class=\"iconsp icon-edit\" title=\"编辑\" ></span><span class=\"iconsp icon-remove\" title=\"删除\" ></span>";
-	    }
+	    width : 100
 	}] ],
     });
     
@@ -137,7 +206,7 @@ $(function() {
     $('#form_role_edit').form({
     	url : "admin/role/edit",
     	onSubmit : function() {
-    		if($('#form_user_add').form("validate")){
+    		if($('#form_role_edit').form("validate")){
     		    return true;
     		}else{
     		    return false;
@@ -147,8 +216,7 @@ $(function() {
     		try{
     			data = $.parseJSON(data);
     			if(data.type=="true"){
-    				success(data.message);
-    				closeWin('user_add');
+    				closeWin('role_edit');
     				$('#role_list').datagrid("reload");
     			}else{
     				error(data.message);
@@ -162,9 +230,11 @@ $(function() {
 });
 function cleanCk(){
     
+    	$("#form_role_edit").find("input[name=name]").val("");
+    
 	$("#role_LogonServer").removeAttr("checked");
     
-	$("#role_GroupCode").removeAttr("checked");
+//	$("#role_GroupCode").removeAttr("checked");
     
 	$("#role_AuditClient").removeAttr("checked");
     

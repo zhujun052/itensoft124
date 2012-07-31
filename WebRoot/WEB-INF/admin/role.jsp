@@ -4,6 +4,12 @@
 <script type="text/javascript" src="resource/admin/js/role.js"></script>
 <div class="container">
 <div class="hidden">
+	<div id="role_user"  iconCls="icon-save" style="width:450px;height:300px;" class="easyui-window" <%=win_topbar %>
+			title="角色用户列表">
+			<div region="center" border="false" >
+		<table id="role_userlist"></table>
+		</div>
+	</div>
 	<div id="role_edit" iconCls="icon-save" class="easyui-window" <%=win_topbar %>
 			title="权限配置">
 			<div region="center" border="false" class="bdcenter">
@@ -21,17 +27,21 @@
 					<tr>
 						<td>
 							<input type="checkbox" value="T" id="role_LogonServer" name="logonserver" />允许登录服务器&nbsp;&nbsp;
-							<input type="checkbox" value="T"  id="role_GroupCode" name="groupcode"/>允许管理的组&nbsp;&nbsp;
 							<input type="checkbox" value="T" id="role_AuditClient" name="auditclient" />认证客户端&nbsp;&nbsp;
 							<input type="checkbox" value="T" id="role_UnInstallClient" name="uninstallclient"/>卸载客户端&nbsp;&nbsp;
+							<input type="checkbox" value="T" id="role_ManageCert" name="managecert"/>管理数字证书&nbsp;&nbsp;
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<input type="checkbox" value="T" id="role_ManageCert" name="managecert"/>管理数字证书&nbsp;&nbsp;
 							<input type="checkbox" value="T" id="role_ScanEncryption" name="scanencryption" />扫描加密&nbsp;&nbsp;
 							<input type="checkbox" value="T" id="role_ScanDecryption" name="scandecryption"/>扫描解密&nbsp;&nbsp;
 							<input type="checkbox" value="T" id="role_UpdateSignatureLib" name="updatesignaturelib"/>升级特征库&nbsp;&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>
+							选择管理的组：<input value="0" name="groupcode" width="100"/>
 						</td>
 					</tr>
 					<tr>

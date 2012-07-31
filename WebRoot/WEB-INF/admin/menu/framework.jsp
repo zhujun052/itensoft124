@@ -27,9 +27,16 @@ $(function(){
 </script>
 <ul id="framework"></ul>
 <div id="framemenu" class="easyui-menu" style="width:120px;">
-	<div onclick="append()" iconCls="icon-add">Append</div>
-	<div onclick="remove()" iconCls="icon-remove">Remove</div>
+	<div onclick="append()" iconCls="icon-add">新增组</div>
+	<div onclick="remove()" iconCls="icon-auth">认证通过</div>
+	<div onclick="remove()" iconCls="icon-reload">刷新客户端策略</div>
 	<div class="menu-sep"></div>
-	<div onclick="expand()">Expand</div>
-	<div onclick="collapse()">Collapse</div>
+	<div onclick="expand()">扫描</div>
+	<div onclick="collapse()">卸载客户端</div>
+	<div onclick="collapse()">中止客户端</div>
+	<div class="menu-sep"></div>
+	<div onclick="append()" iconCls="icon-remove">删除</div>
+	<div onclick="remove()" iconCls="icon-edit">重命名</div>
+	<div class="menu-sep"></div>
+	<div onclick="collapse()" >属性</div>
 </div>
