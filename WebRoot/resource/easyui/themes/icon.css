@@ -19,6 +19,9 @@
 .icon-excel{
 	background:url('icons/excel.png') no-repeat;
 }
+.icon-auth{
+	background:url('icons/auth.png') no-repeat;
+}
 .icon-ok{
 	background:url('icons/ok.png') no-repeat;
 }

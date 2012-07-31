@@ -53,7 +53,7 @@ public final class role_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<ul class=\"easyui-tree\" animate=\"true\" lines=\"true\">\r\n");
       out.write("\t<li><a href=\"javascript:tab('用户列表','admin/user/index')\" >用户列表</a></li>\r\n");
-      out.write("\t<li><a href=\"javascript:tab('角色','admin/role/index')\" >角色</a></li>\r\n");
+      out.write("\t<li><a href=\"javascript:tab('用户角色','admin/role/index')\" >用户角色</a></li>\r\n");
       out.write("\t<li><a href=\"javascript:tab('审批员','admin/virtualmanager/index')\" >审批员</a></li>\r\n");
       out.write("</ul>");
     } catch (Throwable t) {

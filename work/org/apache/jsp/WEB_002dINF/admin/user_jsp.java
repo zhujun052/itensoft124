@@ -86,7 +86,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t\t\t\t\t\tname=\"password\" required=\"true\" validType=\"length[1,50]\" /></td>\r\n");
       out.write("\t\t\t\t\t\t</tr>\r\n");
       out.write("\t\t\t\t\t\t<tr>\r\n");
-      out.write("\t\t\t\t\t\t\t<td class=\"edittd\">描述：</td>\r\n");
+      out.write("\t\t\t\t\t\t\t<td class=\"edittd\" valign=\"top\" >描述：</td>\r\n");
       out.write("\t\t\t\t\t\t\t<td>\r\n");
       out.write("\t\t\t\t\t\t\t\t<textarea name=\"note\" class=\"textborder\" required=\"true\" validType=\"length[1,50]\"  ></textarea>\r\n");
       out.write("\t\t\t\t\t\t\t</td>\r\n");

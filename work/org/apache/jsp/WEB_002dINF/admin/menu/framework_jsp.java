@@ -78,11 +78,18 @@ public final class framework_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</script>\r\n");
       out.write("<ul id=\"framework\"></ul>\r\n");
       out.write("<div id=\"framemenu\" class=\"easyui-menu\" style=\"width:120px;\">\r\n");
-      out.write("\t<div onclick=\"append()\" iconCls=\"icon-add\">Append</div>\r\n");
-      out.write("\t<div onclick=\"remove()\" iconCls=\"icon-remove\">Remove</div>\r\n");
+      out.write("\t<div onclick=\"append()\" iconCls=\"icon-add\">新增组</div>\r\n");
+      out.write("\t<div onclick=\"remove()\" iconCls=\"icon-auth\">认证通过</div>\r\n");
+      out.write("\t<div onclick=\"remove()\" iconCls=\"icon-reload\">刷新客户端策略</div>\r\n");
       out.write("\t<div class=\"menu-sep\"></div>\r\n");
-      out.write("\t<div onclick=\"expand()\">Expand</div>\r\n");
-      out.write("\t<div onclick=\"collapse()\">Collapse</div>\r\n");
+      out.write("\t<div onclick=\"expand()\">扫描</div>\r\n");
+      out.write("\t<div onclick=\"collapse()\">卸载客户端</div>\r\n");
+      out.write("\t<div onclick=\"collapse()\">中止客户端</div>\r\n");
+      out.write("\t<div class=\"menu-sep\"></div>\r\n");
+      out.write("\t<div onclick=\"append()\" iconCls=\"icon-remove\">删除</div>\r\n");
+      out.write("\t<div onclick=\"remove()\" iconCls=\"icon-edit\">重命名</div>\r\n");
+      out.write("\t<div class=\"menu-sep\"></div>\r\n");
+      out.write("\t<div onclick=\"collapse()\" >属性</div>\r\n");
       out.write("</div>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
