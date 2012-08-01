@@ -1,6 +1,8 @@
 $(function() {
     
-    $('#role_userlist').datagrid({
+    
+    $('#roleuserlist').datagrid({
+	url : 'admin/user/list',
 	fit : 'true',
 	nowrap : true,
 	striped : true,
@@ -9,6 +11,32 @@ $(function() {
 	singleSelect : true,
 	rownumbers : true,
 	pagination:true,
+	height:205,
+	frozenColumns : [[{
+		field : 'ck',
+		checkbox : true
+	}]],
+	columns : [ [ {
+	    field : 'name',
+	    title : '用户',
+	    width : 100
+	}, {
+	    field : 'note',
+	    title : '描述',
+	    width : 100
+	}] ]
+    });
+    
+    
+    $('#role_userlist').datagrid({
+	fit : 'true',
+	nowrap : true,
+	method:'post',
+	striped : true,
+	collapsible : false,
+	idField : 'id',
+	singleSelect : true,
+	rownumbers : true,
 	fitColumns:true,
 	height:265,
 	toolbar : [
@@ -16,14 +44,38 @@ $(function() {
 		    text : '添加',
 		    iconCls:'icon-add',
 		    handler : function() {
-			
+			$("#roleuser_add").window({
+			    onOpen:function(){
+				$(this).window("resize");
+			    }
+			});
+			$("#roleuser_add").window("open");
 		    }
 	    },
 	    {
 		    text : '删除',
 		    iconCls:'icon-remove',
 		    handler : function() {
-			
+			var selected = $('#role_userlist').datagrid('getSelected');
+			if(selected){
+			    
+			    var rolename  = $('#role_list').datagrid('getSelected').name;
+			    confirm('确认删除该用户？',function(r){
+				if(r){
+				    $.post('admin/roleuser/delete',{rolename:rolename,username:selected.username},function(data){
+					if(data.type == "false"){
+					    message(data.message);
+					}else{
+					    $("#role_userlist").datagrid('reload');
+					}
+				    },'json');
+				}
+			    });
+			    
+			    
+			}else{
+			    message("请选择一行记录！");
+			}
 		    }
 	    },
 	],
@@ -32,8 +84,8 @@ $(function() {
 		checkbox : true
 	}]],
 	columns : [ [ {
-	    field : 'name',
-	    title : '角色',
+	    field : 'username',
+	    title : '用户',
 	    width : 100
 	}, {
 	    field : 'note',
@@ -183,9 +235,12 @@ $(function() {
 	    handler : function() {
 		var selected = $('#role_list').datagrid('getSelected');
 		if(selected){
+		    
+		    $('#role_userlist').datagrid('options').url = "admin/roleuser/list";
+		    $('#role_userlist').datagrid('options').queryParams = {rolename:selected.name};
+		    $('#role_userlist').datagrid('reload');
+		    
 		    $("#role_user").window("open");
-		    
-		    
 		}else{
 		    message("请选择一行记录！");
 		}
@@ -264,4 +319,31 @@ function cleanCk(){
     
 	$("#role_DocPack").removeAttr("checked");
     
+}
+function roleuseradd(){
+	var roleuserselected = $('#roleuserlist').datagrid('getSelected');
+	if(!roleuserselected){	
+	    message("请选择用户！");
+	    return;
+	}
+	
+	var rolename  = $('#role_list').datagrid('getSelected').name;
+	
+	//添加用户
+	$.post('admin/roleuser/exist',{rolename:rolename,username:roleuserselected.name},function(data){
+	    if(data.type == "true"){
+		 message("该角色下已经存在对应帐号！");
+	    }else{
+		
+		$.post('admin/roleuser/add',{rolename:rolename,username:roleuserselected.username},function(data){
+		    if(data.type == "false"){
+			error(data.message);
+		    }else{
+			$("#roleuser_add").window("close");
+			$("#role_userlist").datagrid('reload');
+		    }
+		},'json');
+
+	    }
+	},'json');
 }

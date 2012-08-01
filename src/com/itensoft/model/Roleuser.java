@@ -4,6 +4,8 @@ public class Roleuser {
     private String rolename;
 
     private String username;
+    
+    private String note;
 
     public String getRolename() {
         return rolename;
@@ -20,4 +22,14 @@ public class Roleuser {
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
     }
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+    
+    
 }

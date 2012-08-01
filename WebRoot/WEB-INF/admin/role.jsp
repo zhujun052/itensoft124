@@ -4,6 +4,20 @@
 <script type="text/javascript" src="resource/admin/js/role.js"></script>
 <div class="container">
 <div class="hidden">
+
+	<div id="roleuser_add"   iconCls="icon-save" style="width:450px;height:300px;" class="easyui-window" <%=win_topbar %>
+			title="角色用户添加" >
+			<div region="center" border="false" class="bdcenter">
+				<table id="roleuserlist" ></table>
+			</div>
+			<div region="south" class="btnbar" border="false">
+				<a class="easyui-linkbutton" iconCls="icon-ok"
+					href="javascript:void(0)" onclick="roleuseradd()">确定</a> <a
+					class="easyui-linkbutton" iconCls="icon-cancel"
+					href="javascript:void(0)" onclick="closeWin('roleuser_add')">取消</a>
+			</div>
+	</div>
+
 	<div id="role_user"  iconCls="icon-save" style="width:450px;height:300px;" class="easyui-window" <%=win_topbar %>
 			title="角色用户列表">
 			<div region="center" border="false" >

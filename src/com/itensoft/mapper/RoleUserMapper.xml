@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.RoleUserMapper">
+  <resultMap id="RoleuserResult" type="com.itensoft.model.Roleuser">
+    <id column="RoleName" jdbcType="VARCHAR" property="rolename" />
+    <id column="UserName" jdbcType="VARCHAR" property="username" />
+    <id column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <select id="loadList" resultMap="RoleuserResult" >
+  	select ru.*,u.note from RoleUser ru left join [user] u on ru.username = u.name  where ru.rolename = #{rolename}
+  </select>
+  <select id="existUser" resultType="INTEGER" >
+  	select count(*) coun from RoleUser where rolename = #{roleuser.rolename} and username = #{roleuser.username}
+  </select>
+  <delete id="delete" >
+  	delete from roleuser where rolename = #{roleuser.rolename} and username = #{roleuser.username}
+  </delete>
+   <insert id="insert" >
+    insert into RoleUser (RoleName, UserName)
+    values (#{roleuser.rolename,jdbcType=VARCHAR}, #{roleuser.username,jdbcType=VARCHAR})
+ </insert>
+ 
+</mapper>
