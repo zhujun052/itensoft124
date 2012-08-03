@@ -6,6 +6,7 @@ $(function(){
 	$('#framework').tree({
 	    method:'get',
 		checkbox: false,
+		lines:true,
 		url: 'admin/group/getTree?id=-1',
 		onClick:function(node){
 			$(this).tree('toggle', node.target);
@@ -15,6 +16,9 @@ $(function(){
 				$('#framework').tree("options").url = "admin/group/getTree";
 		    }
 		},
+		onClick:function(node){
+			top.tabupdate('后台首页',{href:'admin/group/getGroupInfo?id='+node.id});
+		},		
 		onContextMenu: function(e, node){
 			$('#framework').tree('select', node.target);
 			$('#framemenu').menu('show', {

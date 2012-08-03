@@ -10,4 +10,6 @@ public interface GroupMapper {
 
 	List<Group> loadByParentCode(@Param("parentCode") int parentCode);
 
+	Group getInfoById(@Param("id") int id);
+
 }

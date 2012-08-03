@@ -25,4 +25,7 @@
   <select id="loadByParentCode" resultMap="GroupResult" >
   	select g.*,(select count(Code) from [group] where ParentCode = g.Code) childnums from [group] g where g.ParentCode = #{parentCode}
   </select>
+  <select id="getInfoById" resultMap="GroupResult"  >
+  	select * from [group] where code = #{id}
+  </select>
 </mapper>  

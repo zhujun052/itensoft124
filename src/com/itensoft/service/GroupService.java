@@ -9,4 +9,6 @@ public interface GroupService {
 
 	List<Group> loadByParentCode(int ParentCode);
 
+	Group getInfoById(int id);
+
 }

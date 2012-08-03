@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,5 +42,16 @@ public class GroupController extends BaseController{
 		}
 		return arrayToJson(tree);
 	}
+	
+	@RequestMapping(value="/getGroupInfo", method=RequestMethod.GET)
+	public String getGroupInfo(@RequestParam("id") int id,ModelMap modelmap){
+		
+		//策略
+		Group groupinfo = this.groupService.getInfoById(id);
+		modelmap.addAttribute("groupinfo",groupinfo);
+		
+		return "admin/group/info";
+	}
+	
 	
 }

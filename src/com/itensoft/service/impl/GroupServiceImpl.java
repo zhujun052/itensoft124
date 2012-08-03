@@ -24,4 +24,10 @@ public class GroupServiceImpl implements GroupService{
 		return this.groupMapper.loadByParentCode(ParentCode);
 	}
 
+
+	@Override
+	public Group getInfoById(int id) {
+		return this.groupMapper.getInfoById(id);
+	}
+
 }

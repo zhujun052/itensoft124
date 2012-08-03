@@ -273,5 +273,12 @@ function obj2str(o) {
     return o.toString();
 }
 
-
+function tabupdate(title,options){
+    var currenttab = $('#tabs').tabs("getTab",'后台首页');
+    $('#tabs').tabs('update', {
+	tab:currenttab,
+	options:options
+    });
+    
+}
 

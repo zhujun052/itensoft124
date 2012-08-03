@@ -57,6 +57,7 @@ public final class framework_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t$('#framework').tree({\r\n");
       out.write("\t    method:'get',\r\n");
       out.write("\t\tcheckbox: false,\r\n");
+      out.write("\t\tlines:true,\r\n");
       out.write("\t\turl: 'admin/group/getTree?id=-1',\r\n");
       out.write("\t\tonClick:function(node){\r\n");
       out.write("\t\t\t$(this).tree('toggle', node.target);\r\n");
@@ -66,6 +67,9 @@ public final class framework_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\t$('#framework').tree(\"options\").url = \"admin/group/getTree\";\r\n");
       out.write("\t\t    }\r\n");
       out.write("\t\t},\r\n");
+      out.write("\t\tonClick:function(node){\r\n");
+      out.write("\t\t\ttop.tabupdate('后台首页',{href:'admin/group/getGroupInfo?id='+node.id});\r\n");
+      out.write("\t\t},\t\t\r\n");
       out.write("\t\tonContextMenu: function(e, node){\r\n");
       out.write("\t\t\t$('#framework').tree('select', node.target);\r\n");
       out.write("\t\t\t$('#framemenu').menu('show', {\r\n");
