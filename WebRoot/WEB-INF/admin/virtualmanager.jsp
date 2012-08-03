@@ -7,6 +7,8 @@
 <div id="virtualmanager_edit" style="width:500px;height:385px" iconCls="icon-save" class="easyui-window" <%=win_topbar %> title="审批员添加">
 			<div region="center" border="false" class="bdcenter">
 				<form method="post" id="form_virtualmanager_add" >
+					<input type="hidden" name="id" value="0" />
+					<input type="hidden" name="action" value="0" />
 					<table class="tab_form">
 							<tr>
 								<td class="edittd">审批名称：</td>
@@ -32,7 +34,7 @@
 			</div>
 			<div region="south" class="btnbar" border="false">
 				<a class="easyui-linkbutton" iconCls="icon-ok"
-					href="javascript:void(0)" onclick="virtualmanager_add()">添加</a> <a
+					href="javascript:void(0)" onclick="virtualmanager_edit()">编辑</a> <a
 					class="easyui-linkbutton" iconCls="icon-cancel"
 					href="javascript:void(0)" onclick="closeWin('virtualmanager_edit')">取消</a>
 			</div>

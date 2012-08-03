@@ -2,6 +2,7 @@ $(function() {
     
     var lastIndex;
     var ids = [
+                {id:0},
 		{id:1},
 		{id:2},
 		{id:3},
@@ -9,7 +10,6 @@ $(function() {
 		{id:5},
 		{id:6},
 		{id:7},
-		{id:8}
    ];
     
     $('#virtualmanager_list').datagrid({
@@ -18,7 +18,7 @@ $(function() {
 	nowrap : true,
 	striped : true,
 	collapsible : false,
-	idField : 'name',
+	idField : 'id',
 	singleSelect : true,
 	rownumbers : true,
 	pagination:true,
@@ -31,8 +31,10 @@ $(function() {
 		    onOpen:function(){
 			$(this).window('resize');
 			$('#tab_vmall_add').datagrid("unselectAll");
-			
 			$('#tab_vmselect_add').datagrid('loadData',[]);
+			$('#form_virtualmanager_add').find("input[name=action]").val("add");
+			$('#form_virtualmanager_add').find("input[name=name]").val();
+			$('#form_virtualmanager_add').find("input[name=id]").val(0);
 		    }
 		})
 		$("#virtualmanager_edit").window("open");
@@ -41,20 +43,55 @@ $(function() {
 	    text : '删除',
 	    iconCls:'icon-remove',
 	    handler : function() {
-
+		
+		var selected = $('#virtualmanager_list').datagrid('getSelected');
+		if(selected){
+		    
+		    //删除一行virtualmanager
+		    $.post('admin/virtualmanager/delete',{id:selected.id},function(data){
+			if(data.type == 'false'){
+			    error(data.message);
+			}else{
+			    $('#virtualmanager_list').datagrid("reload");
+			}
+			
+		    },'json');
+		    
+		}else{
+		    message("请选择一行记录！");
+		}
+		
 	    }
 	}, {
 	    text : '修改',
 	    iconCls:'icon-edit',
 	    handler : function() {
-		$("#virtualmanager_edit").window({
-		    onOpen:function(){
-			$(this).window('resize');
-		    }
-		});
-		$("#virtualmanager_edit").window("open");
-		
-		
+		var selected = $('#virtualmanager_list').datagrid('getSelected');
+		if(selected){
+		    $("#virtualmanager_edit").window({
+			    onOpen:function(){
+				$(this).window('resize');
+				$('#form_virtualmanager_add').find("input[name=action]").val("update");
+				$('#tab_vmall_add').datagrid("unselectAll");
+				
+				$('#form_virtualmanager_add').find("input[name=name]").val(selected.name);
+				
+				//Jsonlist
+				var jsondata = [];
+				if(selected.user1!=""){
+				    
+				}
+				
+				$('#tab_vmselect_add').datagrid('loadData',jsondata);
+				
+				
+				
+			    }
+			});
+			$("#virtualmanager_edit").window("open");
+		}else{
+		    message("请选择一行记录！");
+		}
 		
 	    }
 	}],
@@ -154,6 +191,8 @@ $(function() {
 		    $(this).combo('clear');
 		}
 		
+		$('#tab_vmselect_add').datagrid('endEdit', lastIndex);
+		
 	    }}}
 	} ] ],
 	onClickRow:function(rowIndex){
@@ -207,27 +246,56 @@ $(function() {
 	    field : 'name',
 	    title : '用户名',
 	    width : 150
-	} ] ]
+	}] ]
     }); 
     
 });
-function virtualmanager_add(){
+function virtualmanager_edit(){
+   
+    var action = $('#form_virtualmanager_add').find("input[name=action]").val();
     var valid = $('#form_virtualmanager_add').find("input[name=name]").validatebox("validate");
+    var id =  $('#form_virtualmanager_add').find("input[name=id]").val();
     if(!valid){
 	message("审批名称不能为空！");
 	return;
     }
     
     var selects = $('#tab_vmselect_add').datagrid("getRows");
+
     if(selects.length<1){
 	message("审批人员不能为空！");
 	return;
     }
     
-    //提交ajax
-    alert(Obj2str(selects));
+    var items = [];
+    //判断序号是否正确
+    for(var i=0;i<selects.length;i++){
+	var item = {user:selects[i].name,sno:selects[i].sno};
+	items.push(item);
+    }
+    var havesno = true;
+    for(var j=0;j<items.length;j++){
+	if(items[j].sno == null || items[j].sno == undefined){
+	    havesno = false;
+	}
+    }
     
-}
-function virtualmanager_edit(){
+    if(!havesno){
+	message("排列序号不能为空！");
+	return;
+    }
+   
+    var name = $('#form_virtualmanager_add').find("input[name=name]").val();
+    var itemstr = obj2str(items);
+
+    //提交ajax
+    $.post('admin/virtualmanager/edit',{action:action,users:itemstr,name:name,id:id},function(data){
+	if(data.type=="true"){
+	    $("#virtualmanager_edit").window("close");
+	    $('#virtualmanager_list').datagrid("reload");
+	}else{
+	    message(data.message);
+	}
+    },'json');
     
 }

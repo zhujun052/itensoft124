@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("<script type=\"text/javascript\" src=\"resource/admin/top.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"resource/admin/js/index.js\"></script>\r\n");
       out.write("</head>\r\n");
-      out.write("<body id=\"bodycontainer\" class=\"easyui-layout\">\r\n");
+      out.write("<body id=\"bodycontainer\" class=\"easyui-layout\" >\r\n");
       out.write("\t<SCRIPT>document.oncontextmenu = function(){return false;};</SCRIPT>\r\n");
       out.write("\t<div region=\"north\" style=\"height: 85px; overflow: hidden;\">\r\n");
       out.write("\t\t<a class=\"logo\"></a>\r\n");

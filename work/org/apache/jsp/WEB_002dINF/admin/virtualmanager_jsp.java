@@ -72,6 +72,8 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write(" title=\"审批员添加\">\r\n");
       out.write("\t\t\t<div region=\"center\" border=\"false\" class=\"bdcenter\">\r\n");
       out.write("\t\t\t\t<form method=\"post\" id=\"form_virtualmanager_add\" >\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"id\" value=\"0\" />\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"action\" value=\"0\" />\r\n");
       out.write("\t\t\t\t\t<table class=\"tab_form\">\r\n");
       out.write("\t\t\t\t\t\t\t<tr>\r\n");
       out.write("\t\t\t\t\t\t\t\t<td class=\"edittd\">审批名称：</td>\r\n");
@@ -97,7 +99,7 @@ String win_topbar = "closed=\"true\" modal=\"true\" collapsible=\"false\"  dragg
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t\t<div region=\"south\" class=\"btnbar\" border=\"false\">\r\n");
       out.write("\t\t\t\t<a class=\"easyui-linkbutton\" iconCls=\"icon-ok\"\r\n");
-      out.write("\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"virtualmanager_add()\">添加</a> <a\r\n");
+      out.write("\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"virtualmanager_edit()\">编辑</a> <a\r\n");
       out.write("\t\t\t\t\tclass=\"easyui-linkbutton\" iconCls=\"icon-cancel\"\r\n");
       out.write("\t\t\t\t\thref=\"javascript:void(0)\" onclick=\"closeWin('virtualmanager_edit')\">取消</a>\r\n");
       out.write("\t\t\t</div>\r\n");

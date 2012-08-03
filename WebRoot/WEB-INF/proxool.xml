@@ -2,11 +2,11 @@
 <something-else-entirely>
 	<proxool>
 		<alias>itemsoft</alias>
-		<driver-url>jdbc:sqlserver://118.123.17.142:1733;databaseName=phoenix_new</driver-url>
+		<driver-url>jdbc:sqlserver://127.0.0.1:1433;databaseName=phoenix_new</driver-url>
 		<driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
 		<driver-properties>
-			<property name="user" value="itensoft" />
-			<property name="password" value="itensoft.123" />
+			<property name="user" value="sa" />
+			<property name="password" value="sa" />
 			<property name="useUnicode" value="true" />
 			<property name="characterEncoding" value="UTF-8" />
 		</driver-properties>

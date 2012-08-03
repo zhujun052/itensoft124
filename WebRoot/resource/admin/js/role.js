@@ -72,7 +72,6 @@ $(function() {
 				}
 			    });
 			    
-			    
 			}else{
 			    message("请选择一行记录！");
 			}

@@ -12,10 +12,10 @@
 		org.hibernate.dialect.SQLServerDialect
 	</property>
 	<property name="connection.url">
-		jdbc:sqlserver://118.123.17.142:1733;databaseName=phoenix
+		jdbc:sqlserver://localhost:1433;databaseName=phoenix
 	</property>
-	<property name="connection.username">itensoft</property>
-	<property name="connection.password">itensoft.123</property>
+	<property name="connection.username">sa</property>
+	<property name="connection.password">sa</property>
 	<property name="connection.driver_class">
 		com.microsoft.sqlserver.jdbc.SQLServerDriver
 	</property>
