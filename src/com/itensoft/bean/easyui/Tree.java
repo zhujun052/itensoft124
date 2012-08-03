@@ -7,6 +7,7 @@ public class Tree {
 	private String text;
 	private String state;
 	private List<Tree> children;
+	private String iconCls;
 	
 	public int getId() {
 		return id;
@@ -33,4 +34,12 @@ public class Tree {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getIconCls() {
+		return iconCls;
+	}
+	public void setIconCls(String iconCls) {
+		this.iconCls = iconCls;
+	}
+	
+	
 }

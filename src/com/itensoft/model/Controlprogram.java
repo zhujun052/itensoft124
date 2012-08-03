@@ -42,6 +42,10 @@ public class Controlprogram {
     private String subprocessinherited;
 
     private String createbysvchost;
+    
+    private String encryptMode;
+    
+    private String printControled;
 
     public Integer getCode() {
         return code;
@@ -210,4 +214,21 @@ public class Controlprogram {
     public void setCreatebysvchost(String createbysvchost) {
         this.createbysvchost = createbysvchost == null ? null : createbysvchost.trim();
     }
+
+	public String getEncryptMode() {
+		return encryptMode;
+	}
+
+	public void setEncryptMode(String encryptMode) {
+		this.encryptMode = encryptMode;
+	}
+
+	public String getPrintControled() {
+		return printControled;
+	}
+
+	public void setPrintControled(String printControled) {
+		this.printControled = printControled;
+	}
+    
 }

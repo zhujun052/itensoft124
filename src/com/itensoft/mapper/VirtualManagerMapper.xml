@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itensoft.mapper.VirtualManagerMapper">
 	<resultMap id="VirtualmanagerResult" type="com.itensoft.model.Virtualmanager">
-		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<id column="ID" jdbcType="INTEGER" property="id" />
 		<result column="Name" jdbcType="VARCHAR" property="name" />
 		<result column="User1" jdbcType="VARCHAR" property="user1" />
 		<result column="Priority1" jdbcType="INTEGER" property="priority1" />
@@ -81,4 +81,13 @@
 	<update id="updatesql">
 		${updatesql}
 	</update>
+	<select id="getVmsByGCode" >
+		select VirtualManagerName from GroupFinalManager where GroupCode=#{code}
+	</select>
+	<select id="getVirtualManagerAll" resultMap="VirtualmanagerResult">
+		select a.Name  from VirtualManager a where not (a.Name in(select VirtualManagerName from GroupManager where GroupCode=${code}))
+	</select>
+	<select id="getVirtualManagerSel" resultMap="VirtualmanagerResult">
+	select name from GroupManager  where GroupCode=${code}
+	</select>
 </mapper>

@@ -28,4 +28,13 @@
   <select id="getInfoById" resultMap="GroupResult"  >
   	select * from [group] where code = #{id}
   </select>
+  <update id="updateAuth">
+   update [group] set audited = 'T' where code = #{id}
+  </update>
+  <delete id="delete">
+  	delete from [group] where code = #{id}
+  </delete>
+  <select id="getExistC" resultType="INTEGER">
+  	select count(*) coun from [group] where parentcode = #{id}
+  </select>
 </mapper>  

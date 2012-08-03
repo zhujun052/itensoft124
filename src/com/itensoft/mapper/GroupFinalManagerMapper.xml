@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.GroupFinalManagerMapper">
+  <resultMap id="GroupfinalmanagerResult" type="com.itensoft.model.Groupfinalmanager">
+    <id column="GroupCode" jdbcType="INTEGER" property="groupcode" />
+    <id column="VirtualManagerName" jdbcType="VARCHAR" property="virtualmanagername" />
+  </resultMap>
+  <select id="getGroupFinalManager" resultMap="GroupfinalmanagerResult" >
+  	select VirtualManagerName from GroupFinalManager where GroupCode=#{code}
+  </select>
+</mapper>

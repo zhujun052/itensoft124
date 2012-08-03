@@ -76,6 +76,8 @@ public class Policy {
     private String ftpbackupusername;
 
     private String ftpbackuppassword;
+    
+    private String usbcontrolmode;
 
     public Integer getCode() {
         return code;
@@ -372,4 +374,15 @@ public class Policy {
     public void setFtpbackuppassword(String ftpbackuppassword) {
         this.ftpbackuppassword = ftpbackuppassword == null ? null : ftpbackuppassword.trim();
     }
+
+	public String getUsbcontrolmode() {
+		return usbcontrolmode;
+	}
+
+	public void setUsbcontrolmode(String usbcontrolmode) {
+		this.usbcontrolmode = usbcontrolmode;
+	}
+    
+    
+    
 }

@@ -2,7 +2,10 @@ package com.itensoft.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.itensoft.bean.VmGroup;
 import com.itensoft.model.User;
+import com.itensoft.model.Virtualmanager;
 
 public interface VirtualManagerMapper {
 
@@ -17,5 +20,11 @@ public interface VirtualManagerMapper {
 	int update(@Param("updatesql") String updatesql);
 
 	void updatesql(@Param("updatesql") String updatesql);
+
+	List<Virtualmanager> getVmsByGCode(@Param("code") int code);
+
+	List<Virtualmanager> getVirtualManagerAll(@Param("code") int code);
+
+	List<Virtualmanager> getVirtualManagerSel(@Param("code") int code);
 
 }

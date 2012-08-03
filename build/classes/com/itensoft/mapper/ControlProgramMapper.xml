@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.ControlProgramMapper">
+  <resultMap id="ControlprogramResult" type="com.itensoft.model.Controlprogram">
+    <id column="Code" jdbcType="INTEGER" property="code" />
+    <result column="ParentCode" jdbcType="INTEGER" property="parentcode" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="ExeName" jdbcType="VARCHAR" property="exename" />
+    <result column="WndClassName" jdbcType="VARCHAR" property="wndclassname" />
+    <result column="Caption" jdbcType="VARCHAR" property="caption" />
+    <result column="ExcludeFile" jdbcType="VARCHAR" property="excludefile" />
+    <result column="NeedInject" jdbcType="VARCHAR" property="needinject" />
+    <result column="Md5" jdbcType="VARCHAR" property="md5" />
+    <result column="OriginalFileName" jdbcType="VARCHAR" property="originalfilename" />
+    <result column="CompanyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="IncludeFile" jdbcType="VARCHAR" property="includefile" />
+    <result column="CloseWrite" jdbcType="CHAR" property="closewrite" />
+    <result column="Actived" jdbcType="CHAR" property="actived" />
+    <result column="RestrictedFormCount" jdbcType="INTEGER" property="restrictedformcount" />
+    <result column="SignSubject" jdbcType="VARCHAR" property="signsubject" />
+    <result column="SignIssuer" jdbcType="VARCHAR" property="signissuer" />
+    <result column="LicenseClass" jdbcType="INTEGER" property="licenseclass" />
+    <result column="Map" jdbcType="CHAR" property="map" />
+    <result column="SubProcessInherited" jdbcType="CHAR" property="subprocessinherited" />
+    <result column="CreateBySvchost" jdbcType="CHAR" property="createbysvchost" />
+  </resultMap>
+  <resultMap id="ControlprogramResultExpand" extends="ControlprogramResult"  type="com.itensoft.model.Controlprogram" >
+      	<result column="EncryptMode" jdbcType="CHAR" property="encryptMode" />
+    	<result column="PrintControled" jdbcType="CHAR" property="printControled" />
+  </resultMap>
+  <select id="getControlProgramByParent" resultMap="ControlprogramResultExpand" >
+  	select a.Code, a.Name ,b.EncryptMode,b.PrintControled from ControlProgram as a left join GroupControlProgram as b on a.Code = b.ProgramCode and b.GroupCode=0 where a.ParentCode=#{pid}
+  </select>
+</mapper>

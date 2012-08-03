@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.PolicyMapper">
+  <resultMap id="PolicyResult" type="com.itensoft.model.Policy">
+    <id column="Code" jdbcType="INTEGER" property="code" />
+    <result column="PrintControled" jdbcType="CHAR" property="printcontroled" />
+    <result column="UDiskMode" jdbcType="TINYINT" property="udiskmode" />
+    <result column="OfflineTime" jdbcType="INTEGER" property="offlinetime" />
+    <result column="OnLineMode" jdbcType="CHAR" property="onlinemode" />
+    <result column="LogUDiskOp" jdbcType="CHAR" property="logudiskop" />
+    <result column="LogNetOp" jdbcType="CHAR" property="lognetop" />
+    <result column="LogPrint" jdbcType="CHAR" property="logprint" />
+    <result column="UseBlackList" jdbcType="CHAR" property="useblacklist" />
+    <result column="ClipboardControled" jdbcType="CHAR" property="clipboardcontroled" />
+    <result column="OLEControled" jdbcType="CHAR" property="olecontroled" />
+    <result column="DragdropControled" jdbcType="CHAR" property="dragdropcontroled" />
+    <result column="SnapShotControled" jdbcType="CHAR" property="snapshotcontroled" />
+    <result column="PrintControledEx" jdbcType="CHAR" property="printcontroledex" />
+    <result column="NeedKey" jdbcType="CHAR" property="needkey" />
+    <result column="ValidateDays" jdbcType="INTEGER" property="validatedays" />
+    <result column="PreviewSpec" jdbcType="VARCHAR" property="previewspec" />
+    <result column="AutoBackup" jdbcType="CHAR" property="autobackup" />
+    <result column="BackupSpec" jdbcType="VARCHAR" property="backupspec" />
+    <result column="BackupDir" jdbcType="VARCHAR" property="backupdir" />
+    <result column="BackupExcludeSpec" jdbcType="VARCHAR" property="backupexcludespec" />
+    <result column="BackupCount" jdbcType="INTEGER" property="backupcount" />
+    <result column="OverlayIcon" jdbcType="CHAR" property="overlayicon" />
+    <result column="Spoolsv" jdbcType="CHAR" property="spoolsv" />
+    <result column="EncryptionSlot" jdbcType="VARCHAR" property="encryptionslot" />
+    <result column="DecryptionSlot" jdbcType="VARCHAR" property="decryptionslot" />
+    <result column="Watermark" jdbcType="VARCHAR" property="watermark" />
+    <result column="CheckOfflineDate" jdbcType="CHAR" property="checkofflinedate" />
+    <result column="OfflineDate" jdbcType="TIMESTAMP" property="offlinedate" />
+    <result column="Ftp" jdbcType="VARCHAR" property="ftp" />
+    <result column="FtpUserName" jdbcType="VARCHAR" property="ftpusername" />
+    <result column="FtpPassword" jdbcType="VARCHAR" property="ftppassword" />
+    <result column="UIShowManagerIcon" jdbcType="CHAR" property="uishowmanagericon" />
+    <result column="UIShowExecutorIcon" jdbcType="CHAR" property="uishowexecutoricon" />
+    <result column="FtpBackup" jdbcType="VARCHAR" property="ftpbackup" />
+    <result column="FtpBackupUserName" jdbcType="VARCHAR" property="ftpbackupusername" />
+    <result column="FtpBackupPassword" jdbcType="VARCHAR" property="ftpbackuppassword" />
+  </resultMap>
+  <select id="getPolicy" resultMap="PolicyResult">
+  	select * from policy where code = #{code}
+  </select>
+</mapper>

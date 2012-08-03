@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import com.itensoft.bean.VUser;
 import com.itensoft.bean.common.Message;
 import com.itensoft.bean.easyui.ListBean;
 import com.itensoft.model.User;
+import com.itensoft.model.Virtualmanager;
 import com.itensoft.service.VirtualManagerService;
 import com.itensoft.util.JsonUtil;
 
@@ -82,6 +84,26 @@ public class VirtualManagerController extends BaseController{
 		return objToJson(msg);
 	}
 	
+	
+	@RequestMapping(value = "/getVirtualManagerAll", method = RequestMethod.POST)
+	@ResponseBody
+	public String getVirtualManagerAll(@Param("code") int code){
+		List<Virtualmanager> vmgroups = this.virtualManagerService.getVirtualManagerAll(code);
+		ListBean bean = new ListBean();
+		bean.setTotal(vmgroups.size());
+		bean.setRows(vmgroups);
+		return objToJson(bean);
+	}
+	
+	@RequestMapping(value = "/getVirtualManagerSel", method = RequestMethod.POST)
+	@ResponseBody
+	public String getVirtualManagerSel(@Param("code") int code){
+		List<Virtualmanager> vmgroups = this.virtualManagerService.getVirtualManagerSel(code);
+		ListBean bean = new ListBean();
+		bean.setTotal(vmgroups.size());
+		bean.setRows(vmgroups);
+		return objToJson(bean);
+	}
 	
 	
 	

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.CertMapper">
+  <resultMap id="CertResult" type="com.itensoft.model.Cert">
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="PublicKey" jdbcType="VARCHAR" property="publickey" />
+    <result column="PrivateKey" jdbcType="VARCHAR" property="privatekey" />
+    <result column="Actived" jdbcType="CHAR" property="actived" />
+  </resultMap>
+  <select id="getCertsByCode" resultMap="CertResult" >
+  	select Cert.Name from Cert left join GroupFinalIdentity as gfi on Cert.Id = gfi.CertId  where gfi.GroupCode=#{code}
+  </select>
+  <select id="getReceive"  resultMap="CertResult" >
+  	select Cert.Name, gfr.ReadOnly, gfr.PrintCount from Cert left join GroupFinalRecver as gfr on Cert.Id = gfr.CertId  where gfr.GroupCode=#{code}
+  </select>
+</mapper>

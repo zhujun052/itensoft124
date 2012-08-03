@@ -11,4 +11,10 @@ public interface GroupService {
 
 	Group getInfoById(int id);
 
+	int auth(int id);
+
+	int delete(int id);
+
+	boolean getExistC(int id);
+
 }

@@ -1,3 +1,12 @@
+.icon-cmp-valid{
+	background:url('icons/valid.png') no-repeat;
+}
+.icon-cmp-invalid{
+	background:url('icons/invalid.png') no-repeat;
+}
+.icon-folder{
+	background:url('icons/tree_folder.gif') no-repeat;
+}
 .icon-blank{
 	background:url('icons/blank.gif') no-repeat;
 }

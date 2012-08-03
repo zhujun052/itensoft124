@@ -1,6 +1,6 @@
 package com.itensoft.model;
 
-public class GroupfinalmanagerKey {
+public class Groupfinalmanager {
     private Integer groupcode;
 
     private String virtualmanagername;

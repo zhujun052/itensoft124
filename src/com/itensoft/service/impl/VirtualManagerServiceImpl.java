@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.itensoft.bean.VUser;
+import com.itensoft.bean.VmGroup;
 import com.itensoft.mapper.VirtualManagerMapper;
 import com.itensoft.model.User;
+import com.itensoft.model.Virtualmanager;
 import com.itensoft.service.VirtualManagerService;
 
 @Service("virtualManagerService")
@@ -92,6 +94,21 @@ public class VirtualManagerServiceImpl implements VirtualManagerService {
 	@Override
 	public int delete(int id) {
 		return this.virtualManagerMapper.delete(id);
+	}
+
+	@Override
+	public List<Virtualmanager> getVmsByGCode(int id) {
+		return this.virtualManagerMapper.getVmsByGCode(id);
+	}
+
+	@Override
+	public List<Virtualmanager> getVirtualManagerAll(int code) {
+		return this.virtualManagerMapper.getVirtualManagerAll(code);
+	}
+
+	@Override
+	public List<Virtualmanager> getVirtualManagerSel(int code) {
+		return this.virtualManagerMapper.getVirtualManagerSel(code);
 	}
 
 }

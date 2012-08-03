@@ -2,7 +2,7 @@
 <something-else-entirely>
 	<proxool>
 		<alias>itemsoft</alias>
-		<driver-url>jdbc:sqlserver://127.0.0.1:1433;databaseName=phoenix_new</driver-url>
+		<driver-url>jdbc:sqlserver://127.0.0.1:1433;databaseName=phoenix</driver-url>
 		<driver-class>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver-class>
 		<driver-properties>
 			<property name="user" value="sa" />

@@ -30,4 +30,22 @@ public class GroupServiceImpl implements GroupService{
 		return this.groupMapper.getInfoById(id);
 	}
 
+
+	@Override
+	public int auth(int id) {
+		return this.groupMapper.updateAuth(id);
+	}
+
+
+	@Override
+	public int delete(int id) {
+		return this.groupMapper.delete(id);
+	}
+
+
+	@Override
+	public boolean getExistC(int id) {
+		return this.groupMapper.getExistC(id) >=1?true:false;
+	}
+
 }

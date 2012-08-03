@@ -279,6 +279,5 @@ function tabupdate(title,options){
 	tab:currenttab,
 	options:options
     });
-    
 }
 
