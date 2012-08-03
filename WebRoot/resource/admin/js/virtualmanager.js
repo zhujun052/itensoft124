@@ -79,11 +79,39 @@ $(function() {
 				//Jsonlist
 				var jsondata = [];
 				if(selected.user1!=""){
-				    
+				    jsondata.push({name:selected.user1,sno:1});
+				}
+				
+				if(selected.user2!=""){
+				    jsondata.push({name:selected.user2,sno:2});
+				}
+				
+				if(selected.user3!=""){
+				    jsondata.push({name:selected.user3,sno:3});
+				}
+				
+				if(selected.user4!=""){
+				    jsondata.push({name:selected.user4,sno:4});
+				}
+				
+				if(selected.user5!=""){
+				    jsondata.push({name:selected.user5,sno:5});
+				}
+				
+				if(selected.user6!=""){
+				    jsondata.push({name:selected.user6,sno:6});
+				}
+				
+				if(selected.user7!=""){
+				    jsondata.push({name:selected.user7,sno:7});  
+				}
+				
+				if(selected.user8!=""){
+				    jsondata.push({name:selected.user8,sno:8});
 				}
 				
 				$('#tab_vmselect_add').datagrid('loadData',jsondata);
-				
+				$('#form_virtualmanager_add').find("input[name=id]").val(selected.id);
 				
 				
 			    }
@@ -157,7 +185,8 @@ $(function() {
 	    handler : function() {
 		var row = $('#tab_vmselect_add').datagrid("getSelected");
 		if(row){
-		    $('#tab_vmselect_add').datagrid("deleteRow",row);
+		    var rowindex = $('#tab_vmselect_add').datagrid("getRowIndex",row);
+		    $('#tab_vmselect_add').datagrid("deleteRow",rowindex);
 		}else{
 		    message("请选择一行记录！");
 		}
