@@ -27,8 +27,8 @@ public class ControlProgramController extends BaseController{
 
 	@RequestMapping(value="/getControlProgramByParent", method=RequestMethod.GET)
 	@ResponseBody
-	public String getControlProgramByParent(@RequestParam("pid") int pid){
-		List<Controlprogram> cps = this.controlProgramService.getControlProgramByParent(pid);
+	public String getControlProgramByParent(@RequestParam("pid") int pid,@RequestParam("code") int code){
+		List<Controlprogram> cps = this.controlProgramService.getControlProgramByParent(pid,code);
 		ListBean bean = new ListBean();
 		bean.setTotal(cps.size());
 		bean.setRows(cps);

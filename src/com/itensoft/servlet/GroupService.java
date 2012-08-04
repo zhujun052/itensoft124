@@ -482,7 +482,8 @@ public class GroupService extends HttpServlet {
 
 					@Override
 					public void execute(Connection arg0) throws SQLException {
-						String sql = "{call dbo.sp_GenGroupFinalControlSoftware(?)}";
+//						String sql = "{call dbo.sp_GenGroupFinalControlSoftware(?)}";
+						String sql = "{call dbo.sp_GenGroupFinalControlProgram(?)}";
 						PreparedStatement p = arg0.prepareCall(sql);
 						p.setInt(1, group.getCode());
 						p.execute();

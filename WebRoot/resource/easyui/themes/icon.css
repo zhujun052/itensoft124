@@ -1,3 +1,9 @@
+.icon-left{
+	background:url('icons/left.png') no-repeat;
+}
+.icon-right{
+	background:url('icons/right.png') no-repeat;
+}
 .icon-cmp-valid{
 	background:url('icons/valid.png') no-repeat;
 }

@@ -6,6 +6,6 @@ import com.itensoft.model.Controlprogram;
 
 public interface ControlProgramService {
 
-	List<Controlprogram> getControlProgramByParent(int pid);
+	List<Controlprogram> getControlProgramByParent(int pid,int code);
 
 }

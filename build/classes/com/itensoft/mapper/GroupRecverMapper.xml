@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.GroupRecverMapper">
+  <resultMap id="GrouprecverResult" type="com.itensoft.model.Grouprecver">
+    <id column="GroupCode" jdbcType="INTEGER" property="groupcode" />
+    <id column="CertId" jdbcType="VARCHAR" property="certid" />
+    <result column="ReadOnly" jdbcType="CHAR" property="readonly" />
+    <result column="PrintCount" jdbcType="INTEGER" property="printcount" />
+  </resultMap>
+  	<select id="loadAll" resultMap="GrouprecverResult" >
+		select CertId , GroupCode, PrintCount , ReadOnly  from GroupRecver where groupCode=#{code}
+	</select>
+</mapper>

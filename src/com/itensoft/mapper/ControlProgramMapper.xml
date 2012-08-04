@@ -23,12 +23,10 @@
     <result column="Map" jdbcType="CHAR" property="map" />
     <result column="SubProcessInherited" jdbcType="CHAR" property="subprocessinherited" />
     <result column="CreateBySvchost" jdbcType="CHAR" property="createbysvchost" />
+    <result column="EncryptMode" jdbcType="CHAR" property="encryptMode" />
+    <result column="PrintControled" jdbcType="CHAR" property="printControled" />
   </resultMap>
-  <resultMap id="ControlprogramResultExpand" extends="ControlprogramResult"  type="com.itensoft.model.Controlprogram" >
-      	<result column="EncryptMode" jdbcType="CHAR" property="encryptMode" />
-    	<result column="PrintControled" jdbcType="CHAR" property="printControled" />
-  </resultMap>
-  <select id="getControlProgramByParent" resultMap="ControlprogramResultExpand" >
-  	select a.Code, a.Name ,b.EncryptMode,b.PrintControled from ControlProgram as a left join GroupControlProgram as b on a.Code = b.ProgramCode and b.GroupCode=0 where a.ParentCode=#{pid}
+  <select id="getControlProgramByParent" resultMap="ControlprogramResult" >
+  	select a.Code, a.Name ,b.EncryptMode,b.PrintControled from ControlProgram as a left join GroupControlProgram as b on a.Code = b.ProgramCode and b.GroupCode=#{code} where a.ParentCode=#{pid}
   </select>
 </mapper>

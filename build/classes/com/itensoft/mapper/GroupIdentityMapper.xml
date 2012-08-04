@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itensoft.mapper.GroupIdentityMapper">
+  <resultMap id="GroupIdentityResult" type="com.itensoft.model.GroupIdentity">
+    <id column="GroupCode" jdbcType="INTEGER" property="groupcode" />
+    <id column="CertId" jdbcType="VARCHAR" property="certid" />
+  </resultMap>
+  <select id="loadAll" resultMap="GroupIdentityResult">
+  	select CertId, GroupCode  from GroupIdentity  where groupCode=#{code}
+  </select>
+</mapper>

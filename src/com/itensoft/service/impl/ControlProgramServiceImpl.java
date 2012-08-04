@@ -21,8 +21,8 @@ public class ControlProgramServiceImpl implements ControlProgramService {
 
 
 	@Override
-	public List<Controlprogram> getControlProgramByParent(int pid) {
-		return this.controlProgramMapper.getControlProgramByParent(pid);
+	public List<Controlprogram> getControlProgramByParent(int pid,int code) {
+		return this.controlProgramMapper.getControlProgramByParent(pid,code);
 	}
 
 }

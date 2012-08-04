@@ -1,6 +1,6 @@
 package com.itensoft.model;
 
-public class GroupidentityKey {
+public class GroupIdentity {
     private Integer groupcode;
 
     private String certid;

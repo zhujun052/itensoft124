@@ -46,6 +46,7 @@ public class Controlprogram {
     private String encryptMode;
     
     private String printControled;
+    
 
     public Integer getCode() {
         return code;

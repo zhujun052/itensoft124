@@ -10,4 +10,12 @@ public interface CertService {
 
 	List<Cert> getReceive(int id);
 
+	List<Cert> getAvailableIdentityList(int code);
+
+	List<Cert> getSelectedIdentityList(int code);
+
+	List<Cert> getAvailableRecverList(int code);
+
+	List<Cert> getSelectedRecverList(int code);
+
 }

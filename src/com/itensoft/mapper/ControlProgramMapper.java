@@ -8,6 +8,6 @@ import com.itensoft.model.Controlprogram;
 
 public interface ControlProgramMapper {
 
-	List<Controlprogram> getControlProgramByParent(@Param("pid") int pid);
+	List<Controlprogram> getControlProgramByParent(@Param("pid") int pid,@Param("code") int code);
 
 }
